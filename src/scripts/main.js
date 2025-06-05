@@ -31,8 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     .catch((error) => {
       const div = document.createElement('div');
-
-      div.textContent = error;
+      div.textContent = error.message;
       div.classList.add('error');
       div.setAttribute('data-qa', 'notification');
       document.body.appendChild(div);
@@ -42,6 +41,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const handleClick = (e) => {
       if (e.button === 0 || e.button === 2) {
         resolve('Second promise was resolved');
+        doc.removeEventListener('mousedown', handleClick);
+        doc.removeEventListener('mouseup', handleClick);
       }
     };
 
